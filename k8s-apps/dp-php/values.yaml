@@ -1,0 +1,39 @@
+k8s-service:
+  applicationName: dp-php
+  replicaCount: 2
+  containerImage:
+    repository: docker.io/development2018/dp-php
+    tag: local
+    pullPolicy: Always
+  additionalContainerEnv:
+    - name: APP_ENV
+      valueFrom:
+        configMapKeyRef:
+          name: env-vars
+          key: env
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/group.name: dp-alb-prod
+      service.beta.kubernetes.io/aws-load-balancer-name: dp-alb
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
+    path: /api/v2
+    pathType: Prefix
+    servicePort: 8080
+  service:
+    enabled: true
+    type: NodePort
+    ports:
+      app:
+        port: 8080
+        targetPort: 8080
+        protocol: TCP
+  containerResources:
+    requests:
+      memory: "64Mi"
+      cpu: "250m"
+    limits:
+      memory: "128Mi"
+      cpu: "1000m"

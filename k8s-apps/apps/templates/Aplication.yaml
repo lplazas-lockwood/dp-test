@@ -1,0 +1,30 @@
+{{- range .Values.apps }}
+{{- $rangeItem := . -}}
+{{- with $ }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $rangeItem.name }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: {{ $rangeItem.namespace }}
+    server: {{ .Values.server }}
+  project: "default"
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    path: {{ $rangeItem.path }}
+    repoURL: {{ $rangeItem.repoUrl | default .Values.repoUrl }}
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
+{{- end }}

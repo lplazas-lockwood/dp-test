@@ -1,0 +1,8 @@
+apiVersion: v2
+name: dp-golang
+description: dp-golang
+version: 1.0.1
+dependencies:
+  - name: k8s-service
+    version: 0.2.29
+    repository: https://helmcharts.gruntwork.io

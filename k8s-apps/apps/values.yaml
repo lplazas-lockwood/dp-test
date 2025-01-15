@@ -1,0 +1,17 @@
+server:
+repoUrl: https://github.com/lplazas-lockwood/dp-test
+apps:
+  argocd-bootstrap-config:
+    name: aws-load-balancer-controller
+    namespace: aws-load-balancer-controller
+    path: argocd/aws-load-balancer-controller
+#  argocd-cm-apps:
+#    name: argocd-cm-apps
+#    namespace: argocd
+#    path: argocd-cm-apps
+#    chartValuesFile: true
+#  argo-rollouts:
+#    name: (@= data.values.release_prefix @)argo-rollouts
+#    namespace: argo-rollouts
+#    path: argo-rollouts
+#    chartValuesFile: true
