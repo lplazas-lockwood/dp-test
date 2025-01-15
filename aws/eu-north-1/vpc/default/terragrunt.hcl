@@ -47,6 +47,8 @@ inputs = {
     "kubernetes.io/role/elb" = "1"
   }
 
+  single_nat_gateway = true
+
   tags = {
 
     Terraform = "true"
