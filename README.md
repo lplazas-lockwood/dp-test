@@ -1,5 +1,9 @@
 ## DP test solution
 
+**Quickstart:**
+- http://k8s-dpalbprod-71edbd1639-907174614.eu-north-1.elb.amazonaws.com/api/v1
+- http://k8s-dpalbprod-71edbd1639-907174614.eu-north-1.elb.amazonaws.com/api/v2
+
 ## Project layout
 ```shell
 .
