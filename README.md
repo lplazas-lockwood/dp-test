@@ -15,6 +15,7 @@
 ├── aws          # Contains Terraform+Terragrunt dir structure and files
 │   └── eu-north-1
 │       ├── eks
+│       ├── rds
 │       ├── security_group
 │       └── vpc
 └── k8s-apps     # CONTAINS HELM CHARTS INSTALLED IN THE K8S CLUSTER
@@ -28,6 +29,9 @@
 - All initial infra in IaC (s3, bucketPolicy, iam, dynamoDN)
 - Networking: better and stricter policies, better defined/designed network
 - EKS improvements: 
-  - observability
+  - oObservability
   - Bootstrap with argo
+  - RBAC for workloads
+  - How to inject secrets (?)
+  - Connectivity to other AWS workloads
 - ... so many more ...

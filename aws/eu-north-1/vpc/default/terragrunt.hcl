@@ -3,19 +3,6 @@ locals {
   region_vars      = read_terragrunt_config(find_in_parent_folders("region.hcl"))
 }
 
-generate "provider_override" {
-  path      = "provider_override.tf"
-  if_exists = "overwrite"
-  contents  = <<EOF
-provider "aws" {
-  # Ignore additional tags across all resources
-  ignore_tags {
-    key_prefixes = ["kubernetes.io/cluster/"]
-  }
-}
-EOF
-}
-
 terraform {
   source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v5.17.0"
 }
